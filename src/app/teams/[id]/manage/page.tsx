@@ -64,12 +64,12 @@ export default async function ManagerPage({ params }: { params: { id: string } }
              <Link href={`/teams/${teamId}`} className="rounded-full bg-white/5 p-2 transition hover:bg-white/10">
                 <ArrowLeft className="h-5 w-5" />
             </Link>
-            <h1 className="text-2xl font-bold">Manage Team</h1>
+            <h1 className="text-2xl font-bold">Team verwalten</h1>
         </header>
 
         <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
             <div className="p-6 border-b border-white/10">
-                <h2 className="text-lg font-semibold">Member Balances</h2>
+                <h2 className="text-lg font-semibold">Mitglieder Kontostand</h2>
             </div>
             <div className="divide-y divide-white/5">
                 {memberBalances.map((member) => (
@@ -91,7 +91,7 @@ export default async function ManagerPage({ params }: { params: { id: string } }
                                      await recordPayment(teamId, member.userId, Math.abs(member.balance))
                                  }}>
                                     <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-green-500">
-                                        Settle <Wallet className="inline ml-1 h-3 w-3" />
+                                        Abrechnen <Wallet className="inline ml-1 h-3 w-3" />
                                     </button>
                                  </form>
                              )}

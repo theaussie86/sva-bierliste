@@ -15,7 +15,7 @@ export async function createTeam(formData: FormData) {
   const name = formData.get('name') as string
 
   if (!name || name.length < 3) {
-      redirect('/teams/create?error=Name must be at least 3 characters')
+      redirect('/teams/create?error=Name muss mindestens 3 Zeichen lang sein')
   }
 
   // 1. Create Team
@@ -27,7 +27,7 @@ export async function createTeam(formData: FormData) {
 
   if (teamError) {
       console.error(teamError)
-      redirect('/teams/create?error=Failed to create team')
+      redirect('/teams/create?error=Team konnte nicht erstellt werden')
   }
 
   // 2. Add creator as Manager/Admin (Role logic needed)
@@ -43,7 +43,7 @@ export async function createTeam(formData: FormData) {
   if (memberError) {
       // Cleanup? Or manual fix needed.
       console.error(memberError)
-      redirect('/teams/create?error=Failed to join team') // This leaves an orphan team, but ok for now.
+      redirect('/teams/create?error=Team konnte nicht beigetreten werden') // This leaves an orphan team, but ok for now.
   }
 
   revalidatePath('/dashboard')
@@ -53,7 +53,7 @@ export async function createTeam(formData: FormData) {
 export async function purchaseDrink(priceId: string, teamId: string) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error('Not authenticated')
+  if (!user) throw new Error('Nicht authentifiziert')
 
   // Transaction: User, Team, ProductPrice, Type=Purchase
   const { error } = await supabase
@@ -68,7 +68,7 @@ export async function purchaseDrink(priceId: string, teamId: string) {
 
   if (error) {
       console.error(error)
-      throw new Error('Transaction failed')
+      throw new Error('Transaktion fehlgeschlagen')
   }
 
   revalidatePath(`/teams/${teamId}`)
@@ -77,7 +77,7 @@ export async function purchaseDrink(priceId: string, teamId: string) {
 export async function recordPayment(teamId: string, userId: string, amount: number) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error('Not authenticated')
+  if (!user) throw new Error('Nicht authentifiziert')
 
   // Check if Manager (omitted for brevity, but should be here)
 
@@ -93,7 +93,7 @@ export async function recordPayment(teamId: string, userId: string, amount: numb
 
   if (error) {
       console.error(error)
-      throw new Error('Payment failed')
+      throw new Error('Zahlung fehlgeschlagen')
   }
 
   revalidatePath(`/teams/${teamId}/manage`)

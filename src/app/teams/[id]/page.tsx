@@ -131,19 +131,19 @@ export default async function TeamPage({ params }: { params: { id: string } }) {
             {['manager', 'admin'].includes(memberData.role) && (
                 <Link href={`/teams/${teamId}/manage`} className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/20 bg-transparent p-4 transition hover:bg-white/5">
                     <Plus className="mb-2 h-8 w-8 text-zinc-500" />
-                    <span className="text-sm font-medium text-zinc-500">Manage Team</span>
+                    <span className="text-sm font-medium text-zinc-500">Team verwalten</span>
                 </Link>
             )}
         </div>
 
         {/* Recent History */}
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-            <h3 className="mb-4 text-lg font-semibold">Recent Activity</h3>
+            <h3 className="mb-4 text-lg font-semibold">Letzte Aktivitäten</h3>
             <div className="space-y-4">
                 {transactions.slice(0, 5).map(t => (
                     <div key={t.id} className="flex items-center justify-between border-b border-white/5 pb-4 last:border-0 last:pb-0">
                         <div>
-                            <p className="font-medium">{t.type === 'purchase' ? t.product_name : 'Payment'}</p>
+                            <p className="font-medium">{t.type === 'purchase' ? t.product_name : 'Einzahlung'}</p>
                             <p className="text-xs text-zinc-500">{new Date(t.created_at).toLocaleDateString()} {new Date(t.created_at).toLocaleTimeString()}</p>
                         </div>
                         <span className={`font-mono font-medium ${t.type === 'purchase' ? 'text-red-400' : 'text-green-400'}`}>
