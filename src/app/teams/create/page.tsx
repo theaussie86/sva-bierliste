@@ -1,8 +1,20 @@
 import { createTeam } from '../actions'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import { createClient } from '@/utils/supabase/server'
+import { redirect } from 'next/navigation'
 
-export default function CreateTeamPage() {
+export default async function CreateTeamPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect('/login')
+  }
+
+  // No global admin check needed. 
+
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-sva-light p-4 font-sans text-sva-dark">
         <div className="w-full max-w-md">

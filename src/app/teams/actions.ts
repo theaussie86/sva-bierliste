@@ -12,6 +12,18 @@ export async function createTeam(formData: FormData) {
     redirect('/login')
   }
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('is_admin')
+    .eq('id', user.id)
+    .single()
+
+  if (!profile?.is_admin) {
+    redirect('/dashboard?error=Keine Berechtigung')
+  }
+
+
+
   const name = formData.get('name') as string
 
   if (!name || name.length < 3) {
@@ -37,7 +49,7 @@ export async function createTeam(formData: FormData) {
     .insert({
         team_id: team.id,
         user_id: user.id,
-        role: 'manager'
+        role: 'manager' // Creator is Team Admin (Manager)
     })
 
   if (memberError) {
