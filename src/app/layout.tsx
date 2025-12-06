@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "SVA Bierliste",
   description: "Getränkemanagement für den SVA",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon-192x192.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
