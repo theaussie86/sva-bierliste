@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-sva-green: #008000; /* Primary Green */
+  --color-sva-dark: #1F1F1F; /* Header/Footer/Text Dark */
+  --color-sva-light: #F5F5F5; /* Light Backgrounds */
+  
+  /* Typography */
+  --font-sans: var(--font-roboto), sans-serif;
+
+  /* Shapes */
+  --radius-sm: 0.25rem; /* 4px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to sure everything still looks
+  correct as you migrate.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--color-sva-light);
+    color: var(--color-sva-dark);
+  }
 }

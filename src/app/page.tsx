@@ -1,34 +1,27 @@
-import Image from "next/image";
+
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            SVA Bierliste App
+    <div className="flex flex-col items-center justify-center min-h-[80vh] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 text-center">
+        <div>
+           {/* Placeholder for SVA Logo if available, using text for now */}
+          <h1 className="mt-6 text-4xl font-extrabold text-sva-dark uppercase tracking-tight sm:text-5xl">
+            SVA <span className="text-sva-green">Bierliste</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Willkommen bei der Getränkeverwaltung des SVA. Bitte melde dich an, um fortzufahren.
+          <p className="mt-2 text-lg text-gray-600">
+            Das digitale Getränkemanagement für den SV Amendingen.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+        <div className="mt-8">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
             href="/login"
+            className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-sm text-white bg-sva-green hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sva-green shadow-lg transition-all"
           >
             Anmelden
           </a>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

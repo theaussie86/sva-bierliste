@@ -4,22 +4,21 @@ import { ArrowLeft } from 'lucide-react'
 
 export default function CreateTeamPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-950 p-4 font-sans text-white">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-sva-light p-4 font-sans text-sva-dark">
         <div className="w-full max-w-md">
-            <Link href="/dashboard" className="mb-6 flex items-center text-zinc-400 hover:text-white transition">
+            <Link href="/dashboard" className="mb-6 flex items-center text-gray-500 hover:text-sva-green transition">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Zurück zum Dashboard
             </Link>
             
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
-                <div className="absolute top-0 right-0 -mr-16 -mt-16 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl"></div>
+            <div className="relative overflow-hidden rounded-sm border border-gray-200 bg-white p-8 shadow-lg">
                 
                 <h1 className="mb-2 text-2xl font-bold">Neues Team erstellen</h1>
-                <p className="mb-6 text-zinc-400 text-sm">Erstelle eine neue Gruppe, um Getränke und Zahlungen zu verwalten.</p>
+                <p className="mb-6 text-gray-600 text-sm">Erstelle eine neue Gruppe, um Getränke und Zahlungen zu verwalten.</p>
                 
                 <form action={createTeam} className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="name" className="text-sm font-medium text-zinc-300">Team Name</label>
+                        <label htmlFor="name" className="text-sm font-medium text-gray-700">Team Name</label>
                         <input 
                             id="name" 
                             name="name" 
@@ -27,13 +26,13 @@ export default function CreateTeamPage() {
                             required 
                             minLength={3}
                             placeholder="z.B. 1. Mannschaft, Alte Herren..." 
-                            className="rounded-lg border border-white/10 bg-black/20 p-3 text-white placeholder-zinc-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            className="rounded-sm border border-gray-300 bg-white p-3 text-sva-dark placeholder-gray-400 outline-none focus:border-sva-green focus:ring-1 focus:ring-sva-green transition-all"
                         />
                     </div>
                     
                     <button 
                          type="submit"
-                        className="mt-2 w-full rounded-lg bg-blue-600 p-3 font-semibold text-white transition hover:bg-blue-500 shadow-lg shadow-blue-500/20 active:scale-[0.98]"
+                        className="mt-2 w-full rounded-sm bg-sva-green p-3 font-semibold text-white transition hover:bg-green-800 shadow-md active:scale-[0.98]"
                     >
                         Team erstellen
                     </button>

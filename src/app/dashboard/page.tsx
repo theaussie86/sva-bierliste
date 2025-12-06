@@ -45,13 +45,13 @@ export default async function Dashboard() {
   })) || []
 
   return (
-    <div className="min-h-screen bg-zinc-950 p-4 md:p-8 font-sans">
+    <div className="min-h-screen bg-sva-light p-4 md:p-8 font-sans text-sva-dark">
       <header className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white tracking-tight">Meine Teams</h1>
+        <h1 className="text-2xl font-bold text-sva-dark tracking-tight">Meine Teams</h1>
         <div className="flex items-center gap-4">
-            <span className="text-zinc-400 text-sm hidden md:inline">{user.email}</span>
+            <span className="text-gray-600 text-sm hidden md:inline">{user.email}</span>
             <form action={signout}>
-              <button className="rounded-full bg-white/5 p-2 transition hover:bg-white/10 hover:text-red-400">
+              <button className="rounded-full bg-white p-2 transition hover:bg-gray-100 hover:text-red-600 text-gray-500 shadow-sm border border-gray-200">
                 <LogOut className="h-5 w-5" />
               </button>
             </form>
@@ -60,15 +60,15 @@ export default async function Dashboard() {
 
       <main>
         {teams.length === 0 ? (
-           <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 py-20 text-center backdrop-blur-sm">
-             <div className="mb-4 rounded-full bg-blue-500/20 p-4">
-               <Plus className="h-8 w-8 text-blue-400" />
+           <div className="flex flex-col items-center justify-center rounded-sm border border-gray-200 bg-white py-20 text-center shadow-lg">
+             <div className="mb-4 rounded-full bg-sva-green/10 p-4">
+               <Plus className="h-8 w-8 text-sva-green" />
              </div>
-             <h3 className="mb-2 text-xl font-semibold text-white">Noch keine Teams</h3>
-             <p className="mb-6 text-zinc-400 max-w-sm">Tritt einem Team bei oder erstelle ein neues, um anzufangen.</p>
+             <h3 className="mb-2 text-xl font-semibold text-sva-dark">Noch keine Teams</h3>
+             <p className="mb-6 text-gray-500 max-w-sm">Tritt einem Team bei oder erstelle ein neues, um anzufangen.</p>
              <Link
                href="/teams/create"
-               className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white transition hover:bg-blue-500 shadow-lg shadow-blue-500/20"
+               className="rounded-sm bg-sva-green px-6 py-2.5 font-medium text-white transition hover:bg-green-800 shadow-md"
              >
                Neues Team erstellen
              </Link>
@@ -80,25 +80,25 @@ export default async function Dashboard() {
                <Link 
                  key={team.id} 
                  href={`/teams/${team.id}`}
-                 className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition hover:bg-white/10 hover:border-white/20"
+                 className="group relative overflow-hidden rounded-sm border border-gray-200 bg-white p-6 transition hover:shadow-md hover:border-sva-green"
                >
                  <div className="flex items-center gap-4">
-                   <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-lg font-bold text-white shadow-inner">
+                   <div className="h-12 w-12 rounded-sm bg-sva-green/10 flex items-center justify-center text-lg font-bold text-sva-green">
                      {team.name[0].toUpperCase()}
                    </div>
                    <div>
-                     <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">{team.name}</h3>
-                     <span className="text-sm text-zinc-400 capitalize">{team.role}</span>
+                     <h3 className="font-semibold text-sva-dark group-hover:text-sva-green transition-colors">{team.name}</h3>
+                     <span className="text-sm text-gray-500 capitalize">{team.role}</span>
                    </div>
                  </div>
                </Link>
              ))}
               <Link
                href="/teams/create"
-               className="flex h-full min-h-[100px] flex-col items-center justify-center rounded-xl border border-dashed border-white/20 bg-transparent p-6 transition hover:border-blue-500/50 hover:bg-blue-500/10 group"
+               className="flex h-full min-h-[100px] flex-col items-center justify-center rounded-sm border border-dashed border-gray-300 bg-transparent p-6 transition hover:border-sva-green hover:bg-sva-green/5 group"
              >
-               <Plus className="mb-2 h-6 w-6 text-zinc-500 group-hover:text-blue-400 transition-colors" />
-               <span className="text-sm font-medium text-zinc-500 group-hover:text-blue-400 transition-colors">Team erstellen</span>
+               <Plus className="mb-2 h-6 w-6 text-gray-400 group-hover:text-sva-green transition-colors" />
+               <span className="text-sm font-medium text-gray-500 group-hover:text-sva-green transition-colors">Team erstellen</span>
              </Link>
           </div>
         )}
