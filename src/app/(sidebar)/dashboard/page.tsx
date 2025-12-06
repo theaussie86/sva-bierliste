@@ -1,8 +1,8 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { LogOut, Plus } from 'lucide-react'
-import { signout } from '@/app/login/actions'
+import { Plus } from 'lucide-react'
+
 
 interface Team {
     id: string
@@ -54,17 +54,9 @@ export default async function Dashboard() {
   const isSystemAdmin = profile?.is_admin ?? false
 
   return (
-    <div className="min-h-screen bg-sva-light p-4 md:p-8 font-sans text-sva-dark">
+    <>
       <header className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-sva-dark tracking-tight">Meine Teams</h1>
-        <div className="flex items-center gap-4">
-            <span className="text-gray-600 text-sm hidden md:inline">{user.email}</span>
-            <form action={signout}>
-              <button className="rounded-full bg-white p-2 transition hover:bg-gray-100 hover:text-red-600 text-gray-500 shadow-sm border border-gray-200">
-                <LogOut className="h-5 w-5" />
-              </button>
-            </form>
-        </div>
       </header>
 
       <main>
@@ -116,6 +108,6 @@ export default async function Dashboard() {
           </div>
         )}
       </main>
-    </div>
+    </>
   )
 }

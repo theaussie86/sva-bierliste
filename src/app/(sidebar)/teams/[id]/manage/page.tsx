@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Wallet } from 'lucide-react'
-import { recordPayment } from '@/app/teams/actions'
+import { recordPayment } from '@/app/(sidebar)/teams/actions'
 
 export default async function ManagerPage({ params }: { params: { id: string } }) {
   const supabase = await createClient()

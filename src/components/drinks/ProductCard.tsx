@@ -1,7 +1,7 @@
 'use client'
 
 import { useFormStatus } from 'react-dom'
-import { purchaseDrink } from '@/app/teams/actions'
+import { purchaseDrink } from '@/app/(sidebar)/teams/actions'
 
 interface ProductCardProps {
     id: string
